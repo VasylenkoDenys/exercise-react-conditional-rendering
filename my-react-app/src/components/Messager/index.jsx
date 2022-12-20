@@ -25,19 +25,21 @@ class Messanger extends React.Component {
     );
   }
 
-  clickerReader =()=> {
-    this.setState({isRead: !this.state.isRead });
-  }
+  clickerReader = () => {
+    this.setState({ isRead: !this.state.isRead });
+  };
 
   render = () => {
-    const {isRead} = this.state
+    const { isRead } = this.state;
     return (
-      <article>
-        <p>{this.messageDisplayer()}</p>
-        <button hidden={isRead} onClick={this.clickerReader}>
-          Read message
-        </button>
-      </article>
+      <div className="articleWrapper">
+        <article className={isRead ? "massageReadStyle" : "messageUnreadStyle"}>
+          <p>{this.messageDisplayer()}</p>
+          <button disabled={isRead} onClick={this.clickerReader}>
+            Read message
+          </button>
+        </article>
+      </div>
     );
   };
 }
